@@ -1,13 +1,11 @@
 <?php
 require('./functlib.php');
-$html = '';
-$url = 'http://websterandwebster.catsone.com/xml/?v=2';
+require('../__CONNECT/webster-connect.php');
+require('./modules/XMLImport.php');
+require('./modules/Job.php');
+  $url        = 'http://websterandwebster.catsone.com/xml/?v=2';
+  $data       = simplexml_load_file($url);
+  $XML_Import = new XMLImport($connection, $data);
 
-
-  $xml = simplexml_load_file($url);
-  
-  prewrap($xml);
-
-
-// echo($html);
+  $XML_Import->parse();
 ?>
